@@ -22,5 +22,10 @@ namespace PracticaAnimales.Servicios
             return _animalRepositorio.ObtenerTodos();
         }
 
+        public List<Animal> ObtenerPorTipo(int idTipo)
+        {
+            return _animalRepositorio.ObtenerPorTipo(idTipo);
+        }
+
     }
 }

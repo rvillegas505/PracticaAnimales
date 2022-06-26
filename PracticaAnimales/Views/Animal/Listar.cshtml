@@ -1,6 +1,26 @@
 ﻿@model List<PracticaAnimales.Animal>
 
-	<table>
+	<form action="/Animal/Listar" method="post">
+
+		<div>
+		Tipo Animal:
+		<select name="IdTipoAnimal">
+			<option value="">Tipo Animal</option>
+			@foreach (var tipoAnimal in (List<PracticaAnimales.TipoAnimal>) ViewBag.TipoAnimal)
+				{
+					<option value="@tipoAnimal.IdTipoAnimal">@tipoAnimal.IdTipoAnimal</option>
+				}
+		</select>
+		</div>
+
+
+		<div>
+        <input type="submit" value="Filtrar" />
+		</div>
+
+
+
+		<table>
 		<tr>
 			<th>Nombre</th>
 			<th>Peso</th>
@@ -17,3 +37,8 @@
 			</tr>
 		}
 	</table>
+
+
+	</form>
+
+	

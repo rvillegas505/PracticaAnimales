@@ -7,5 +7,8 @@ namespace PracticaAnimales.Servicios
         void Insertar(Animal entidad);
 
         List<Animal> ObtenerTodos();
+
+        List<Animal> ObtenerPorTipo(int idTipo);
+        
     }
 }

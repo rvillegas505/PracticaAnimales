@@ -8,6 +8,8 @@ namespace PracticaAnimales.Repositorios
 
         List<Animal> ObtenerTodos ();
 
+        List<Animal> ObtenerPorTipo(int idTipo);
+
         void SaveChanges();
 
 

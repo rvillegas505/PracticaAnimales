@@ -40,6 +40,23 @@ namespace PracticaAnimales.Controllers
         public ActionResult Listar()
         {
             List<Animal> animales = _animalServicio.ObtenerTodos();
+            ViewBag.TipoAnimal = _tipoAnimalServicio.ObtenerTodos();
+
+            return View(animales);
+        }
+
+        [HttpPost]
+        public ActionResult Listar(int? idTipoAnimal)
+        {
+            if (idTipoAnimal.HasValue)
+            {
+                List<Animal> animalesPortipo = _animalServicio.ObtenerPorTipo(idTipoAnimal.Value);
+                List<TipoAnimal> tipoAnimales = _tipoAnimalServicio.ObtenerTodos();
+                ViewBag.TipoAnimal = tipoAnimales;
+                return View(animalesPortipo);
+            }
+
+            List<Animal> animales = _animalServicio.ObtenerTodos();
             
             return View(animales);
         }
