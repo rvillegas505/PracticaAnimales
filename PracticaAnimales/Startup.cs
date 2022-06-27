@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PracticaAnimales.Repositorios;
 using PracticaAnimales.Servicios;
 using System;
 using System.Collections.Generic;
@@ -27,9 +26,9 @@ namespace PracticaAnimales
         {
             services.AddControllersWithViews();
             services.AddDbContext<_20221CPracticaEFContext>();
-            services.AddScoped<ITipoAnimalRepositorio, TipoAnimalRepositorio>();
+           
             services.AddScoped<ITipoAnimalServicio, TipoAnimalServicio>();
-            services.AddScoped<IAnimalRepositorio, AnimalRepositorio>();
+            
             services.AddScoped<IAnimalServicio, AnimalServicio>();
         }
 

@@ -9,6 +9,10 @@ namespace PracticaAnimales.Servicios
         List<Animal> ObtenerTodos();
 
         List<Animal> ObtenerPorTipo(int idTipo);
+
+        Animal ObtenerPorId(int idAnimal);
+
+        void Eliminar(int idAnimal);
         
     }
 }

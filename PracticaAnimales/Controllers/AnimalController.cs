@@ -37,6 +37,13 @@ namespace PracticaAnimales.Controllers
         }
 
         [HttpGet]
+        public ActionResult Borrar(int id)
+        {
+            _animalServicio.Eliminar(id);
+            return RedirectToAction("Listar");
+        }
+
+        [HttpGet]
         public ActionResult Listar()
         {
             List<Animal> animales = _animalServicio.ObtenerTodos();

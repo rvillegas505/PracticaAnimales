@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using PracticaAnimales.Repositorios;
 
 namespace PracticaAnimales.Servicios
 {
@@ -30,5 +30,21 @@ namespace PracticaAnimales.Servicios
                 Where(o => o.IdTipoAnimal == idTipo).ToList();
         }
 
+        public Animal ObtenerPorId(int idAnimal)
+        {
+            Animal animal = _contexto.Animals.Where(o => o.IdAnimal == idAnimal).FirstOrDefault();
+            if (animal == null)
+                throw new ArgumentException("No se puede borrar el animal, ya que no se encuentra disponible.");
+            return animal;
+        }
+
+        public void Eliminar(int idAnimal)
+        {
+            Animal animalABorrar = ObtenerPorId(idAnimal);
+            _contexto.Remove(animalABorrar);
+            _contexto.SaveChanges();
+        }
+
+        
     }
 }

@@ -26,6 +26,7 @@
 			<th>Peso</th>
 			<th>Edad</th>
 			<th>Tipo</th>
+			<th>Eliminar</th>
 		</tr>
 		@foreach (var animal in Model)
 		{
@@ -34,6 +35,8 @@
 				<td>@animal.PesoPromedio</td>
 				<td>@animal.EdadPromedio</td>
 				<td>@animal.IdTipoAnimalNavigation.Nombre</td>
+				<td><a href="/Animal/Borrar/@animal.IdAnimal">@animal.IdAnimal</a></td>
+
 			</tr>
 		}
 	</table>
