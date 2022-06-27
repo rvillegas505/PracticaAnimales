@@ -1,30 +1,33 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PracticaAnimales.Repositorios;
 
 namespace PracticaAnimales.Servicios
 {
     public class AnimalServicio : IAnimalServicio
     {
-        IAnimalRepositorio _animalRepositorio;
-        public AnimalServicio(IAnimalRepositorio AnimalRepositorio)
+        _20221CPracticaEFContext _contexto;
+        public AnimalServicio(_20221CPracticaEFContext contexto)
         {
-            _animalRepositorio = AnimalRepositorio; 
+            _contexto = contexto; 
         }
 
         public void Insertar(Animal entidad)
         {
-            _animalRepositorio.Insertar(entidad);
-            _animalRepositorio.SaveChanges();
+            _contexto.Add(entidad);
+            _contexto.SaveChanges();
         }
 
         public List<Animal> ObtenerTodos()
         {
-            return _animalRepositorio.ObtenerTodos();
+            return _contexto.Animals.Include(o => o.IdTipoAnimalNavigation).ToList();
         }
 
         public List<Animal> ObtenerPorTipo(int idTipo)
         {
-            return _animalRepositorio.ObtenerPorTipo(idTipo);
+            return _contexto.Animals.Include(o => o.IdTipoAnimalNavigation).
+                Where(o => o.IdTipoAnimal == idTipo).ToList();
         }
 
     }

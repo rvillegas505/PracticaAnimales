@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PracticaAnimales.Repositorios;
 
 namespace PracticaAnimales.Servicios
 {
     public class TipoAnimalServicio : ITipoAnimalServicio
     {
-        ITipoAnimalRepositorio _tipoAnimalRepositorio;
-        public TipoAnimalServicio(ITipoAnimalRepositorio tipoAnimalRepositorio)
+        _20221CPracticaEFContext _contexto;
+        public TipoAnimalServicio(_20221CPracticaEFContext contexto)
         {
-            _tipoAnimalRepositorio = tipoAnimalRepositorio; 
+            _contexto = contexto; 
         }
         public List<TipoAnimal> ObtenerTodos()
         {
-            return _tipoAnimalRepositorio.ObtenerTodos();
+            return _contexto.TipoAnimals.ToList();
         }
     }
 }
