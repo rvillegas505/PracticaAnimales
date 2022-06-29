@@ -34,7 +34,7 @@ namespace PracticaAnimales.Servicios
         {
             Animal animal = _contexto.Animals.Where(o => o.IdAnimal == idAnimal).FirstOrDefault();
             if (animal == null)
-                throw new ArgumentException("No se puede borrar el animal, ya que no se encuentra disponible.");
+                throw new ArgumentException("No se puede Obtener el animal, ya que no se encuentra disponible.");
             return animal;
         }
 
@@ -45,6 +45,21 @@ namespace PracticaAnimales.Servicios
             _contexto.SaveChanges();
         }
 
-        
+        public void Modificar(Animal entidad)
+        {
+            if (entidad == null)
+            {
+                throw new ArgumentException("No se puede modificar el animal, ya que no se encuentra disponible.");
+            }
+
+            Animal animalAModificar = ObtenerPorId(entidad.IdAnimal);
+
+            animalAModificar.NombreEspecie = entidad.NombreEspecie;
+            animalAModificar.PesoPromedio = entidad.PesoPromedio;
+            animalAModificar.EdadPromedio = entidad.EdadPromedio;
+            animalAModificar.IdTipoAnimal = entidad.IdTipoAnimal;
+
+            _contexto.SaveChanges();
+        }
     }
 }

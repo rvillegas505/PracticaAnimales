@@ -13,6 +13,8 @@ namespace PracticaAnimales.Servicios
         Animal ObtenerPorId(int idAnimal);
 
         void Eliminar(int idAnimal);
+
+        void Modificar (Animal entidad);
         
     }
 }

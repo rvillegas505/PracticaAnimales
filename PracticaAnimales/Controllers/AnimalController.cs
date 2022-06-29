@@ -68,6 +68,22 @@ namespace PracticaAnimales.Controllers
             return View(animales);
         }
 
+        [HttpGet]
+        public ActionResult Modificar (int id)
+        {
+            Animal animal = _animalServicio.ObtenerPorId(id);
+            List<TipoAnimal> tipoAnimales = _tipoAnimalServicio.ObtenerTodos();
+            ViewBag.TipoAnimal = tipoAnimales;
+            return View(animal);
+        }
+
+        [HttpPost]
+        public ActionResult Modificar(Animal animal)
+        {
+            _animalServicio.Modificar(animal);
+            return RedirectToAction("Listar");
+        }
+
 
     }
 }

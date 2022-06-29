@@ -8,7 +8,7 @@
 			<option value="">Tipo Animal</option>
 			@foreach (var tipoAnimal in (List<PracticaAnimales.TipoAnimal>) ViewBag.TipoAnimal)
 				{
-					<option value="@tipoAnimal.IdTipoAnimal">@tipoAnimal.IdTipoAnimal</option>
+					<option value="@tipoAnimal.IdTipoAnimal">@tipoAnimal.Nombre</option>
 				}
 		</select>
 		</div>
@@ -27,6 +27,7 @@
 			<th>Edad</th>
 			<th>Tipo</th>
 			<th>Eliminar</th>
+			<th>Modificar</th>
 		</tr>
 		@foreach (var animal in Model)
 		{
@@ -35,7 +36,8 @@
 				<td>@animal.PesoPromedio</td>
 				<td>@animal.EdadPromedio</td>
 				<td>@animal.IdTipoAnimalNavigation.Nombre</td>
-				<td><a href="/Animal/Borrar/@animal.IdAnimal">@animal.IdAnimal</a></td>
+				<td><a href="/Animal/Borrar/@animal.IdAnimal">Eliminar</a></td>
+				<td><a href="/Animal/Modificar/@animal.IdAnimal">Modificar</a></td>
 
 			</tr>
 		}
